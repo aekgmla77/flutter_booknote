@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "901938859721",
+    "project_id": "booknote-8754a",
+    "storage_bucket": "booknote-8754a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901938859721:android:80e07dd67314615f644718",
+        "android_client_info": {
+          "package_name": "com.example.booknote"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvEc70MYnE2EY21EgMt7gl2fp2STJFBQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
