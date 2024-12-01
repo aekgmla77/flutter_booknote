@@ -24,7 +24,7 @@ class SearchPage extends StatelessWidget {
           children: [
             // 검색어 입력 필드
             TextField(
-              // enter 키 누르면 검색
+              // enter 키 누르면 검색 textInputAction
               textInputAction: TextInputAction.done,
               controller: _searchTextController,
               onSubmitted: (query){
