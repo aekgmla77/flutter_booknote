@@ -1,6 +1,6 @@
 # boonote
 
-A new Flutter project.
+독서 관리 앱
 
 ## Getting Started
 
