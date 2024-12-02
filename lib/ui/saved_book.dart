@@ -201,7 +201,8 @@ class _SavedBook extends State<SavedBook> {
                                   as Map<String, dynamic>;
                               return TextButton(
                                   onPressed: (){
-                                    _openEditMemo(memoId.id, memo['memo']);
+                                    // uid, memo, create_date(수정 시 create_date 유지)
+                                    _openEditMemo(memoId.id, memo['memo'], memo['create_date'].toDate());
                                   },
                                   child: ListTile(
                                     title: Text(
@@ -273,9 +274,9 @@ class _SavedBook extends State<SavedBook> {
   }
 
   // 메모 수정
-  void _openEditMemo(String memoId, String existingMemo) async{
+  void _openEditMemo(String memoId, String existingMemo, DateTime createDate) async{
     // 기존 데이터 전달
-    final updateMemo = await Get.to(() => SaveMemo(memoId: memoId, memo: existingMemo, bookId: widget.bookId,));
+    final updateMemo = await Get.to(() => SaveMemo(memoId: memoId, memo: existingMemo, createDate: createDate, bookId: widget.bookId, ));
 
     if(updateMemo != null){
       // 업데이트
@@ -340,11 +341,11 @@ class _SavedBook extends State<SavedBook> {
     Get.back();
   }
 
-
+// 메모 저장
   void _openMemo(String bookId, {String? memoId, String? memo}) async {
     Get.to(() => SaveMemo(
       bookId: bookId,
-      memoId: memoId, // 새 메모는 null
+      memoId: memoId,
       memo: memo,    // 새 메모는 null
     ));
   }

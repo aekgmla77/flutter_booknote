@@ -8,8 +8,9 @@ class SaveMemo extends StatefulWidget {
   final String? memo; // 전달받은 메모 값
   final String? memoId;
   final String bookId;
+  final DateTime? createDate;
 
-  SaveMemo({Key? key, this.memo, this.memoId, required this.bookId})
+  SaveMemo({Key? key, this.memo, this.memoId, required this.bookId, this.createDate})
       : super(key: key);
 
   @override
@@ -18,15 +19,19 @@ class SaveMemo extends StatefulWidget {
 
 class _SaveMemo extends State<SaveMemo> {
   late TextEditingController _memoController;
+  late DateTime createTime;
 
   void initState() {
     super.initState();
     _memoController = TextEditingController(text: widget.memo);
+    createTime = widget.createDate ?? DateTime.now();
+    print('뭔디 $createTime');
   }
 
   @override
   Widget build(BuildContext context) {
     print('보자 ${widget.memoId}');
+    print('ddd $createTime}');
 
     return Scaffold(
       backgroundColor: const Color(0xFFFCFCFC),
@@ -88,7 +93,7 @@ class _SaveMemo extends State<SaveMemo> {
       "user_id": userId,
       "book_id": widget.bookId,
       "memo": _memoController.text,
-      "create_date": DateTime.now(),
+      "create_date": createTime,
     };
 
     try {

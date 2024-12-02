@@ -88,6 +88,7 @@ class BookGridView extends StatelessWidget{
           .collection('books')
           .where('user_id', isEqualTo: currentUser?.uid)
           .where('book_status', isEqualTo: bookStatus)
+          .orderBy('create_date', descending: true)
           .get(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -183,25 +184,26 @@ class BookGridView extends StatelessWidget{
   }
 }
 
-// 연도별 데이터 불러오기
-Map<int, List<DocumentSnapshot>> groupBooks(List<DocumentSnapshot> books) {
-  final Map<int, List<DocumentSnapshot>> groupedBooks = {};
+// 연도별 데이터 불러오기(드롭다운 기능)
+// Map<int, List<DocumentSnapshot>> groupBooks(List<DocumentSnapshot> books) {
+//   final Map<int, List<DocumentSnapshot>> groupedBooks = {};
+//
+//   for (var book in books) {
+//     final createDate = (book['create_date'] as Timestamp?)?.toDate();
+//     if (createDate != null) {
+//       final year = createDate.year;
+//
+//       if (!groupedBooks.containsKey(year)) {
+//         groupedBooks[year] = [];
+//       }
+//       groupedBooks[year]!.add(book);
+//     }
+//   }
+//
+//   return groupedBooks;
+// }
 
-  for (var book in books) {
-    final createDate = (book['create_date'] as Timestamp?)?.toDate();
-    if (createDate != null) {
-      final year = createDate.year;
-
-      if (!groupedBooks.containsKey(year)) {
-        groupedBooks[year] = [];
-      }
-      groupedBooks[year]!.add(book);
-    }
-  }
-
-  return groupedBooks;
-}
-
+// 책이 없을때
 class EmptyStatePage extends StatelessWidget {
   final String title;
   final String description;
@@ -210,6 +212,7 @@ class EmptyStatePage extends StatelessWidget {
     required this.title,
     required this.description,
   });
+
 
   @override
   Widget build(BuildContext context) {

@@ -30,7 +30,7 @@ class AuthController extends GetxController {
 
       final currentUser = FirebaseAuth.instance.currentUser?.uid;
       isLoggedIn.value = true;
-      Get.snackbar("로그인 성공", "환영합니다! ${currentUser}");
+      Get.snackbar("로그인 성공", "환영합니다!");
       print('환영합니다! ${currentUser}');
     } catch (e) {
       Get.snackbar("로그인 실패", e.toString());

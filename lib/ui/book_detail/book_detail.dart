@@ -94,7 +94,6 @@ class _BookDetailState extends State<BookDetail> {
       bookData["end_date"] = endDate;
       bookData["star"] = star;
     } else if (bookStatus == "읽고 있는 책") {
-      bookData["start_date"] = startDate;
       bookData["goal_date"] = goalDate;
     }
 
